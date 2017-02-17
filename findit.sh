@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # Here's the first line of code to write to do the first homework assignment.
 #
@@ -12,3 +12,13 @@
 
 dir=$1
 
+if [! -d $dir ]; then
+  echo "The directory $dir does not exist."
+else
+  for fitf in $dir/*.fits
+  do catf="${fitf%%.*}.cat"
+  if [ ! -f $catf ]; then
+    echo "Missing $catf"
+  fi
+  done
+fi
